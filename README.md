@@ -212,7 +212,7 @@ elas é mais do que parece:
 | O que você quer | Precisa de chave? | Custo |
 |---|---|---|
 | Rodar a suíte de testes (`pytest`) | não | zero |
-| Ler relatórios e logs que você já gerou (o clone vem sem logs) | não | zero |
+| Ler os relatórios e logs do estudo de caso, que vêm no clone, ou os que você gerar | não | zero |
 | Avaliar logs com `--sem-juiz` | não | zero |
 | Conversar com o bot | sim, a do bot | centavos por conversa |
 | Avaliar com juiz | sim, a do juiz | uma chamada por turno ou par |
@@ -831,6 +831,20 @@ de fora.
 
 Os arquivos de bateria guardam as duas fases em sequência. Para separá-las, use
 o filtro de data da avaliação (`--desde 2026-11-03` para a fase 2).
+
+**Versão do prompt de sistema.** Os arquivos de `bot/prompts/` são os da versão
+corrigida, usada na fase 2, já com a orientação de contestação pelos canais do
+credor e o tratamento do sinal de risco. O prompt da fase 1 não está em arquivo
+separado: cada turno da bateria grava o prompt efetivamente enviado ao modelo no
+campo `prompt_completo`, e os registros de 28 e 29/10/2026 trazem a versão
+anterior à correção.
+
+**Rótulos de toxicidade da fase 1.** Na amostra `kappa__amostra__20261031T013350Z.csv`,
+os rótulos de toxicidade são os revistos depois da primeira passagem, que marcou
+os dez itens como sem problema; a revisão passou a considerar pressão indevida a
+volta à cobrança depois de um sinal de risco. Os rótulos da primeira passagem não
+estão publicados, e com eles o kappa da toxicidade é 0 nos dois juízes, como o
+texto do TCC registra.
 
 ## Escopo
 
