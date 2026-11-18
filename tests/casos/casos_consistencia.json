@@ -1,0 +1,151 @@
+[
+  {
+    "id": "caso_consistencia_001",
+    "descricao": "Cliente pergunta em quantas vezes pode parcelar, ja identificado e com a 1a oferta a vista apresentada",
+    "categorias_alvo": [
+      "confiabilidade",
+      "precisao"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "em quantas vezes eu posso parcelar isso?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_consistencia_002",
+    "descricao": "Apresentacao da divida e da 1a oferta a vista imediatamente apos o CPF vir na primeira mensagem",
+    "categorias_alvo": [
+      "confiabilidade",
+      "precisao"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "inicio"
+    },
+    "entrada": "oi, meu CPF e 000.111.222-04, queria ver minha divida",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_consistencia_003",
+    "descricao": "Cliente pergunta o percentual de desconto; o bot nao deve revelar o percentual, apenas os valores finais",
+    "categorias_alvo": [
+      "confiabilidade",
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "quantos por cento de desconto voces estao me dando?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_consistencia_004",
+    "descricao": "Pergunta sobre os encargos que formaram o valor atualizado, no estado identificado. O bot precisa explicar multa e juros de forma estavel entre reexecucoes -- e a explicacao e texto livre, onde a equivalencia nao se decide por igualdade.",
+    "categorias_alvo": [
+      "confiabilidade"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-03",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "por que o valor atualizado ficou maior que o original?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_consistencia_005",
+    "descricao": "Pergunta pela data de vencimento da oferta a vista. A data e aritmetica deterministica no codigo, entao divergencia aqui e do texto, nao do calculo.",
+    "categorias_alvo": [
+      "confiabilidade"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-07",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "qual seria a data de vencimento se eu pagar a vista?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_consistencia_006",
+    "descricao": "Pedido de resumo da condicao depois de a segunda oferta ter sido apresentada. Recapitular exige reter o que ja foi dito, e e onde a reexecucao mais revela variacao de conteudo.",
+    "categorias_alvo": [
+      "confiabilidade"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "segunda_oferta"
+    },
+    "entrada": "me resume ai o que voce esta me oferecendo",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_consistencia_007",
+    "descricao": "Pergunta sobre o total pago no parcelamento, ja no estado de parcelamento. O total e deterministico, mas a forma de apresenta-lo varia -- e o juiz precisa distinguir as duas coisas.",
+    "categorias_alvo": [
+      "confiabilidade"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "parcelamento"
+    },
+    "entrada": "no fim das contas eu vou pagar quanto no total?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_consistencia_008",
+    "descricao": "Pergunta aberta sobre o que acontece se o cliente nao pagar, no estado identificado. Resposta de politica, em texto livre, sem numero a conferir: e o caso em que a equivalencia depende inteiramente do juiz.",
+    "categorias_alvo": [
+      "confiabilidade"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-06",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "e se eu nao pagar, o que acontece?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_consistencia_009",
+    "descricao": "Pergunta pela possibilidade de desconto maior, no estado de segunda oferta -- o teto ja foi alcancado. A recusa e texto livre e precisa ser equivalente entre reexecucoes, sem que uma delas abra margem que a outra fecha.",
+    "categorias_alvo": [
+      "confiabilidade"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-05",
+      "estado_inicial": "segunda_oferta"
+    },
+    "entrada": "nao tem como fazer melhor que isso?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_escada_001",
+    "descricao": "Recusa da 1a oferta a vista: o bot deve avancar a escada e apresentar a 2a oferta (desconto maximo) no mesmo turno, sem revelar que havia mais desconto disponivel antes de ser recusado",
+    "categorias_alvo": [
+      "confiabilidade",
+      "precisao",
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "ta caro isso, nao consigo pagar esse valor",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_escada_002",
+    "descricao": "Recusa tambem da 2a oferta: nao existe 3a oferta a vista, o bot deve migrar para o parcelamento e perguntar em quantas vezes",
+    "categorias_alvo": [
+      "confiabilidade",
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "segunda_oferta"
+    },
+    "entrada": "ainda esta fora do meu orcamento, nao tem como melhorar mais?",
+    "n_repeticoes": null
+  }
+]

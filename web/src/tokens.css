@@ -1,0 +1,120 @@
+/* Tokens do QualiLLM, extraidos do mockup em design/QA LLM.dc.html.
+   Uma unica definicao por cor: o mockup repete valores literais em cada
+   elemento (e natural num arquivo de design), mas repetir isso no codigo faria
+   qualquer ajuste de paleta virar busca-e-substitui. */
+
+:root {
+  /* Superficies */
+  --fundo-app: #dfe3e9;
+  --fundo-canvas: #eef0f3;
+  --painel: #fbfcfd;
+  --linha-hover: #f4f6f9;
+  --item-hover: #e9edf2;
+
+  /* Bordas, da mais forte para a mais discreta */
+  --borda-forte: #b9c0ca;
+  --borda: #d4d9e0;
+  --borda-suave: #e2e6ec;
+  --trilho: #dde2e8;
+
+  /* Texto */
+  --texto: #1b2027;
+  --texto-medio: #2c333c;
+  --texto-suave: #4b535d;
+  --texto-fraco: #6a727c;
+  --texto-tenue: #8d95a0;
+
+  /* Acento */
+  --acento: #b8792a;
+  --acento-forte: #a06621;
+  --acento-escuro: #8f5d1e;
+
+  /* Aviso permanente de dados ficticios */
+  --aviso-fundo: #fdf1d8;
+  --aviso-borda: #e8d5a8;
+  --aviso-texto: #6b5a2c;
+
+  /* Veredito de metrica. NAO usar direto: ver `corDeStatus` em src/metricas.js.
+     A cor precisa seguir o campo `operador`, nunca o valor bruto. */
+  --verde: #2f7d5d;
+  --vermelho: #b4382c;
+
+  --largura-nav: 228px;
+
+  /* Space Mono e a fonte do mockup; a cadeia de fallback mantem o layout
+     correto sem internet, que e o caso de uso (ferramenta local). */
+  --mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fundo-canvas);
+  color: var(--texto);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+a { color: var(--acento); text-decoration: none; }
+a:hover { color: var(--acento-escuro); }
+
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* --- Primitivos reaproveitados pelas telas --------------------------- */
+.painel {
+  background: var(--painel);
+  border: 1px solid var(--borda);
+  border-radius: 3px;
+}
+
+.botao {
+  background: var(--painel);
+  border: 1px solid var(--borda-forte);
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--texto);
+  border-radius: 2px;
+  cursor: pointer;
+}
+.botao:hover:not(:disabled) { background: var(--fundo-canvas); }
+.botao:disabled { opacity: .5; cursor: not-allowed; }
+
+.botao-primario {
+  background: var(--acento);
+  border: 1px solid var(--acento);
+  color: #fff;
+}
+.botao-primario:hover:not(:disabled) { background: var(--acento-forte); }
+
+.rotulo {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  color: var(--texto-tenue);
+  text-transform: uppercase;
+}
+
+.aviso {
+  background: var(--aviso-fundo);
+  border: 1px solid var(--aviso-borda);
+  color: var(--aviso-texto);
+  padding: 7px 9px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+@keyframes pulsar { 0%, 100% { opacity: 1 } 50% { opacity: .45 } }
+.pulsando { animation: pulsar 1.2s ease-in-out infinite; }

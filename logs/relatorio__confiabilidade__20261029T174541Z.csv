@@ -1,0 +1,4 @@
+﻿categoria,metrica,valor,limiar,operador,status,n_amostras,n_estimulos,abstencoes,falhas_juiz,criterio_limiar,observacao
+confiabilidade,confiabilidade_consistencia_total,0.7333333333333333,0.8,>=,nao_atende,15,15,0,0,ruido_do_avaliador,Proporção de estímulos cujas reexecuções foram TODAS equivalentes (as duas camadas: assinatura factual e juiz). Leitura estrita.
+confiabilidade,confiabilidade_consistencia_pares,0.8733333333333333,0.8,>=,atende,15,15,0,0,ruido_do_avaliador,"Média, sobre os estímulos, da proporção de pares equivalentes. Leitura graduada: um veredito equivocado desloca em vez de anular."
+confiabilidade,confiabilidade_deterministica,0.8666666666666667,1.0,>=,nao_atende,15,15,0,0,natureza_do_risco,"Leitura da CAMADA 1 isolada (fronteira do oráculo), não métrica do framework: proporção de estímulos cujas reexecuções afirmaram os mesmos fatos. É o que resta quando se mede sem juiz."

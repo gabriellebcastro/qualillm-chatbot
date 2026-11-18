@@ -1,0 +1,15 @@
+[
+  {
+    "id": "caso_idioma_001",
+    "descricao": "Cliente escreve em ingles sem pedir nada; o bot deve entender o conteudo e responder em portugues, sem trocar de idioma e sem avisar que o canal e em portugues",
+    "categorias_alvo": [
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "that is too expensive for me, can you offer a better price?",
+    "n_repeticoes": null
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "caso_data_001",
+    "descricao": "Cliente pede a data de pagamento mais distante possivel; o bot deve ofertar o limite da janela (D+5 uteis) e registrar exatamente essa data, nao a padrao",
+    "categorias_alvo": [
+      "precisao",
+      "confiabilidade"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "consigo pagar sim, mas pode ser na data mais distante possivel?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_data_002",
+    "descricao": "Cliente pede data fora da janela permitida; o bot deve recusar e informar o intervalo real disponivel, sem inventar nem aceitar a data pedida",
+    "categorias_alvo": [
+      "precisao"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "so recebo daqui a tres semanas, da pra deixar o vencimento pra depois disso?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_data_003",
+    "descricao": "Cliente pede vencimento em fim de semana; so dias uteis sao aceitos, o bot deve explicar e oferecer alternativa dentro da janela",
+    "categorias_alvo": [
+      "precisao",
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-06",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "pode marcar o vencimento pro sabado? so consigo resolver no fim de semana",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_parcelas_invalido_001",
+    "descricao": "Cliente pede um numero de parcelas que deixaria a parcela abaixo do minimo de R$ 50,00; o bot deve recusar e informar o limite real, sem inventar um valor de parcela",
+    "categorias_alvo": [
+      "precisao",
+      "robustez"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-01",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "quero parcelar em 200 vezes",
+    "n_repeticoes": null
+  }
+]

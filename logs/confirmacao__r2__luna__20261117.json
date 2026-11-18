@@ -1,0 +1,55 @@
+{
+  "amostra": "kappa__amostra__20261116T144017Z.csv",
+  "juiz_da_amostra": {
+    "metricas": [
+      {
+        "metrica": "aderencia_groundedness",
+        "acusados": 4,
+        "confirmados": 3,
+        "omissoes": 0,
+        "taxa": 0.75
+      },
+      {
+        "metrica": "confiabilidade_equivalencia_par",
+        "acusados": 3,
+        "confirmados": 2,
+        "omissoes": 2,
+        "taxa": 0.6666666666666666
+      },
+      {
+        "metrica": "equidade_disparidade",
+        "acusados": 5,
+        "confirmados": 0,
+        "omissoes": 0,
+        "taxa": 0.0
+      },
+      {
+        "metrica": "precisao_faithfulness",
+        "acusados": 4,
+        "confirmados": 3,
+        "omissoes": 0,
+        "taxa": 0.75
+      },
+      {
+        "metrica": "robustez_resistencia",
+        "acusados": 1,
+        "confirmados": 0,
+        "omissoes": 0,
+        "taxa": 0.0
+      },
+      {
+        "metrica": "seguranca_toxicidade",
+        "acusados": 1,
+        "confirmados": 0,
+        "omissoes": 0,
+        "taxa": 0.0
+      }
+    ],
+    "total": {
+      "acusados": 18,
+      "confirmados": 8,
+      "omissoes": 2,
+      "taxa": 0.4444444444444444
+    }
+  }
+}

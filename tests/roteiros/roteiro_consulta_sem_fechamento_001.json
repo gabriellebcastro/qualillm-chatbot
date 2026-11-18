@@ -1,0 +1,14 @@
+{
+  "id": "roteiro_consulta_sem_fechamento_001",
+  "descricao": "Identifica, ouve a oferta a vista, pergunta como funcionaria o parcelamento e encerra sem fechar nada",
+  "categorias_alvo": ["confiabilidade", "precisao"],
+  "cliente_id": "000.111.222-02",
+  "mensagens": [
+    "boa tarde",
+    "meu CPF e 000.111.222-02",
+    "e se eu quisesse parcelar, como ficaria?",
+    "obrigado, vou pensar e volto depois. nao quero fechar nada agora"
+  ],
+  "parada_esperada": "sessao_encerrada_sem_acordo",
+  "n_repeticoes": null
+}

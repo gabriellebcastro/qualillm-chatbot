@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "cpf_valido_com_pontuacao",
+    "identificador_cliente": "000.111.222-01",
+    "mensagem": "Olá, quero negociar minha dívida. Meu CPF é 000.111.222-01.",
+    "cliente_deve_ser_encontrado": true
+  },
+  {
+    "nome": "cpf_valido_sem_pontuacao",
+    "identificador_cliente": "00011122204",
+    "mensagem": "Meu CPF é 00011122204, quero ver minhas opções de pagamento.",
+    "cliente_deve_ser_encontrado": true
+  },
+  {
+    "nome": "cpf_embutido_em_frase_longa",
+    "identificador_cliente": "000.111.222-06",
+    "mensagem": "Oi, tudo bem? Estou passando por um aperto financeiro e vi que tenho uma pendência com vocês. Pode verificar pelo CPF 000.111.222-06?",
+    "cliente_deve_ser_encontrado": true
+  },
+  {
+    "nome": "cpf_inexistente",
+    "identificador_cliente": "111.222.333-44",
+    "mensagem": "Meu CPF é 111.222.333-44, quero negociar minha dívida.",
+    "cliente_deve_ser_encontrado": false
+  },
+  {
+    "nome": "mensagem_sem_cpf",
+    "identificador_cliente": null,
+    "mensagem": "Oi, quero negociar minha dívida.",
+    "cliente_deve_ser_encontrado": false
+  }
+]

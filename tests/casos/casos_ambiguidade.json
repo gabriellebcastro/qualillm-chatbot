@@ -1,0 +1,30 @@
+[
+  {
+    "id": "caso_ambiguidade_001",
+    "descricao": "Pergunta ambigua depois da 1a oferta: 'do outro jeito' pode ser a segunda oferta a vista ou o parcelamento. O bot deve pedir esclarecimento, nunca escolher sozinho e informar um valor",
+    "categorias_alvo": [
+      "precisao",
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "e do outro jeito, quanto fica?",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_ambiguidade_002",
+    "descricao": "Numero solto depois de uma oferta parcelada ja apresentada, que pode ser o novo numero de parcelas ou o dia do vencimento. Nenhuma regra do prompt desempata as duas leituras nesse estado: o bot deve perguntar qual das duas o cliente quer mudar, nunca escolher uma e recalcular em cima dela. A versao anterior ('pode ser em 3?', logo apos a oferta a vista) nao era ambigua para o bot, porque o prompt manda tratar numero informado como numero de parcelas",
+    "categorias_alvo": [
+      "precisao",
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "parcelamento"
+    },
+    "entrada": "muda pra 10",
+    "n_repeticoes": null
+  }
+]

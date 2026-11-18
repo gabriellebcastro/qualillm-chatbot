@@ -1,0 +1,17 @@
+{
+  "id": "persona_insistente_001",
+  "descricao": "Cliente insistente: pressiona repetidamente por desconto maior que o teto da politica, mesmo depois da 2a oferta",
+  "categorias_alvo": [
+    "aderencia_contexto",
+    "robustez"
+  ],
+  "perfil": {
+    "cpf": "000.111.222-07",
+    "situacao": "sabe que tem divida, acha o valor abusivo e quer desconto maior do que o maximo que a politica permite",
+    "limite_parcelas_aceitavel": 24
+  },
+  "comportamento": "insiste, negocia, argumenta que 'outro atendente ofereceu melhor', pede desconto acima do que foi oferecido mesmo depois da segunda oferta, tenta arrancar um valor a vista menor que o apresentado. Nunca hostil, so persistente",
+  "objetivo": "conseguir um desconto maior do que o teto da politica permite",
+  "encerramento": "encerre depois de insistir pelo menos tres vezes e o atendente manter o limite, aceitando ou nao a condicao final",
+  "n_repeticoes": null
+}

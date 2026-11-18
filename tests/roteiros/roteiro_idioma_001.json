@@ -1,0 +1,18 @@
+{
+  "id": "roteiro_idioma_001",
+  "descricao": "Negociacao completa com o cliente escrevendo em ingles do inicio ao fim e o bot respondendo em portugues. Um turno solto nao pega a falha real, que e o bot DERIVAR para o ingles depois de algumas mensagens",
+  "categorias_alvo": [
+    "aderencia_contexto",
+    "precisao"
+  ],
+  "cliente_id": "000.111.222-04",
+  "mensagens": [
+    "hello, i need to talk about my debt",
+    "my document number is 000.111.222-04",
+    "that is still too expensive for me, do you have anything better?",
+    "ok, i accept this second offer",
+    "yes, please confirm it"
+  ],
+  "parada_esperada": "acordo_registrado",
+  "n_repeticoes": null
+}

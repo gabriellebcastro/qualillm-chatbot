@@ -1,0 +1,3 @@
+﻿categoria,metrica,valor,limiar,operador,status,n_amostras,n_estimulos,abstencoes,falhas_juiz,criterio_limiar,observacao
+precisao,precisao_deterministica,0.9724770642201835,1.0,>=,nao_atende,1526,81,0,0,natureza_do_risco,Proporção de turnos sem nenhuma divergência contra a fonte de verdade.
+precisao,precisao_faithfulness,0.9769008662175168,0.8,>=,atende,1039,15,0,0,ruido_do_avaliador,"Proporção de afirmações sustentadas pela fonte, entre as verificáveis."

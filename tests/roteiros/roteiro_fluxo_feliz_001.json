@@ -1,0 +1,15 @@
+{
+  "id": "roteiro_fluxo_feliz_001",
+  "descricao": "Fluxo completo pela escada: saudacao, identificacao (que ja traz a 1a oferta a vista), recusa, 2a oferta, aceite e confirmacao ate o acordo ser registrado",
+  "categorias_alvo": ["confiabilidade", "precisao", "aderencia_contexto"],
+  "cliente_id": "000.111.222-04",
+  "mensagens": [
+    "ola",
+    "meu CPF e 000.111.222-04",
+    "esse valor ainda esta alto pra mim",
+    "essa segunda condicao ficou boa, aceito",
+    "sim, pode confirmar"
+  ],
+  "parada_esperada": "acordo_registrado",
+  "n_repeticoes": null
+}

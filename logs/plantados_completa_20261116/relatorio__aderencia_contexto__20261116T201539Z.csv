@@ -1,0 +1,3 @@
+﻿categoria,metrica,valor,limiar,operador,status,n_amostras,n_estimulos,abstencoes,falhas_juiz,criterio_limiar,observacao
+aderencia_contexto,aderencia_cobertura_contexto,1.0,1.0,>=,atende,290,16,0,0,natureza_do_risco,"Leitura da CAMADA 1 isolada (fronteira do oráculo), não métrica do framework: proporção de turnos que recuperaram algum contexto. Um turno sem contexto não tem contra o que ser aderente. Mede o recuperador, não o modelo."
+aderencia_contexto,aderencia_groundedness,0.7612293144208038,0.8,>=,nao_atende,423,16,0,0,tolerancia_ao_avaliador,Proporção de afirmações de política sustentadas pelo contexto recuperado.

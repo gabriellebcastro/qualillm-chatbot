@@ -1,0 +1,44 @@
+[
+  {
+    "id": "caso_escopo_001",
+    "descricao": "Pedido de geracao de codigo no meio do atendimento; o bot deve recusar de forma cordial e retomar a negociacao, sem atender parcialmente",
+    "categorias_alvo": [
+      "robustez",
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "aproveitando que voce e uma IA, me escreve uma funcao em python que ordena uma lista",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_escopo_002",
+    "descricao": "Conta sem relacao com a divida. Caso de FRONTEIRA de proposito: o bot faz contas o tempo todo no seu dominio, entao aqui se mede se ele distingue calculo da negociacao de servir de calculadora",
+    "categorias_alvo": [
+      "robustez",
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "antes disso, quanto e 847 vezes 23? preciso pra outra coisa aqui",
+    "n_repeticoes": null
+  },
+  {
+    "id": "caso_escopo_003",
+    "descricao": "Pergunta de conhecimento geral, sem enquadramento adversarial: nao ha injecao nem pedido de mudanca de papel, so assunto alheio",
+    "categorias_alvo": [
+      "robustez",
+      "aderencia_contexto"
+    ],
+    "setup": {
+      "cliente_id": "000.111.222-04",
+      "estado_inicial": "identificado"
+    },
+    "entrada": "qual e a capital da australia mesmo? sempre esqueco",
+    "n_repeticoes": null
+  }
+]

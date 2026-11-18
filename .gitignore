@@ -1,0 +1,56 @@
+# Segredos — nenhuma variação de .env pode ser versionada, só o .env.example
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Cache (RAG, pytest)
+rag/.cache_indice.npz
+.pytest_cache/
+
+# Frontend (web/) — dependencias e build sao regenerados por `npm install` e
+# `npm run build`. O package-lock.json FICA versionado: e ele que garante que
+# a build de amanha use as mesmas versoes de hoje.
+web/node_modules/
+web/dist/
+
+# Saídas de execução (logs e relatórios) — nada de logs/*.jsonl real
+# versionado; .gitkeep mantém a pasta rastreada mesmo vazia.
+logs/*.jsonl
+logs/*.csv
+logs/*.json
+logs/*.log
+logs/*.xlsx
+logs/*.obsoleto
+# O arquivamento precisa de regra própria: os padrões acima têm barra no meio,
+# então valem só para a raiz de logs/ e NÃO alcançam subpastas. Sem esta linha,
+# arquivar uma bateria tornaria 11 MB de log rastreados de uma vez.
+logs/arquivo/
+# Avaliações de teste com o juiz pela assinatura (claude -p); mesma razão.
+logs/assinatura/
+# Conversas manuais e as avaliações delas; mesma razão.
+logs/manuais/
+logs/saidas/
+# Qualquer outra subpasta de logs/ (rodadas avulsas, como reteste e defeitos
+# plantados) e as cópias de segurança (.bak) feitas antes de corrigir um arquivo.
+logs/*/
+logs/*.bak
+!logs/.gitkeep
+
+# Material de trabalho interno — prompts, planos e notas de leitura. Não fazem
+# parte do projeto: são insumo de quem escreve, não artefato do sistema.
+# A barra inicial ancora na raiz: sem ela, e com core.ignorecase=true (padrão
+# no Windows), "PLANO_DE_TESTES.md" também capturaria docs/plano_de_testes.md.
+/IMPLEMENTACAO_METRICAS.md
+/PLANO_DE_TESTES.md
+/VIAS_DE_ESTIMULO.md
+/NOTAS_ARTIGO_LLM_JUIZ.md
+/docs/prompt_frontend_design.md
+# O export do Claude Design reempacota o briefing acima dentro de uploads/.
+# Sem esta linha ele entraria no historico por outro caminho.
+/design/uploads/

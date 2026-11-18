@@ -1,0 +1,15 @@
+{
+  "id": "roteiro_parcelamento_001",
+  "descricao": "Percorre a escada inteira ate o parcelamento: recusa as duas ofertas a vista, pede para parcelar, escolhe o numero de parcelas e fecha o acordo",
+  "categorias_alvo": ["confiabilidade", "precisao", "aderencia_contexto"],
+  "cliente_id": "000.111.222-04",
+  "mensagens": [
+    "boa tarde, meu CPF e 000.111.222-04",
+    "nao tenho esse valor a vista",
+    "ainda nao consigo, prefiro parcelar",
+    "pode ser em 10 vezes",
+    "isso mesmo, pode confirmar"
+  ],
+  "parada_esperada": "acordo_registrado",
+  "n_repeticoes": null
+}

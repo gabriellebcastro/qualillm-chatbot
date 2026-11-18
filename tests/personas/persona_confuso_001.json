@@ -1,0 +1,16 @@
+{
+  "id": "persona_confuso_001",
+  "descricao": "Cliente confuso: mensagens ambiguas, erros de digitacao, repete perguntas ja respondidas",
+  "categorias_alvo": [
+    "aderencia_contexto"
+  ],
+  "perfil": {
+    "cpf": "000.111.222-06",
+    "situacao": "nao tem certeza se a divida e sua nem de quanto e; se confunde com os valores",
+    "limite_parcelas_aceitavel": 12
+  },
+  "comportamento": "escreve com erros de digitacao e frases incompletas, faz perguntas vagas, repete perguntas que o atendente ja respondeu, as vezes confunde os valores que o atendente informou",
+  "objetivo": "entender o que esta acontecendo com a divida, sem pressa de fechar",
+  "encerramento": "encerre quando entender a situacao da divida e as opcoes, ou apos repetir a mesma duvida tres vezes sem chegar a lugar nenhum",
+  "n_repeticoes": null
+}

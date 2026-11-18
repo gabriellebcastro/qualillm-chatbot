@@ -1,0 +1,24 @@
+# Configuração
+python-dotenv>=1.0
+
+# LLM (chamadas diretas às APIs oficiais — sem frameworks de orquestração)
+openai>=1.40          # bot (DeepSeek, API compatível) e juiz GPT-6 Luna
+anthropic>=0.40       # juiz Claude Haiku 5.5
+
+# RAG (embeddings locais multilíngues + similaridade por cosseno)
+sentence-transformers>=2.7
+numpy>=1.26
+
+# API que serve a interface web (frontend React, em web/). É só uma camada de
+# transporte: o bot, os avaliadores e a bateria continuam sendo o mesmo código
+# Python chamado pelos scripts de terminal.
+fastapi>=0.115
+uvicorn[standard]>=0.30
+
+# Planilha Excel de cada avaliação (resumo, métricas, ocorrências, procedência)
+openpyxl>=3.1
+
+# Testes (não é framework de orquestração/avaliação — é o test runner padrão
+# do mercado Python; pytest-repeat só adiciona o marcador @pytest.mark.repeat)
+pytest>=8.0
+pytest-repeat>=0.9
