@@ -528,7 +528,7 @@ delas que sai a revisão do critério do juiz quando o κ fica baixo.
 ### 8. Testes automatizados (`tests/`)
 
 ```bash
-pytest                                # suíte rápida: 184 testes, sem API
+pytest                                # suíte rápida: 193 testes, sem API
 pytest -m integration -v              # 16 testes com LLM real (custa tokens)
 ```
 
@@ -641,9 +641,8 @@ bot e do simulador de cliente na bateria.
 
 > **Os números não vão sair idênticos aos do TCC.** O bot, o simulador e os
 > juízes são modelos não determinísticos, então uma nova rodada dá valores
-> próximos, mas não iguais. Os registros das rodadas do TCC (logs,
-> relatórios, julgamentos e a amostra rotulada) ficam com a autora e podem ser
-> pedidos a ela.
+> próximos, mas não iguais. Os registros das rodadas do TCC estão em `logs/`
+> (ver [Registros do estudo de caso](#registros-do-estudo-de-caso)).
 
 ## Controle de versão
 
@@ -654,8 +653,10 @@ cache — nada disso deve ser versionado:
   documentação e não tem chave nenhuma preenchida).
 - **Logs:** `logs/*.jsonl`, `*.csv`, `*.json`, `*.xlsx`, `*.log` e as pastas
   `logs/arquivo/` (baterias antigas) e `logs/assinatura/` (testes pela assinatura) — são saída de execução (podem conter
-  texto de conversas), não código-fonte. Só `logs/.gitkeep` fica versionado,
-  pra manter a pasta no repositório mesmo vazia.
+  texto de conversas), não código-fonte. Os registros definitivos do estudo de
+  caso foram incluídos à parte, apesar dessas regras (ver [Registros do estudo
+  de caso](#registros-do-estudo-de-caso)); execuções novas continuam fora do
+  repositório, e `logs/.gitkeep` mantém a pasta mesmo vazia.
 - **Cache:** `rag/.cache_indice.npz` (embeddings do RAG) e `.pytest_cache/`
   (pytest) — ambos regenerados automaticamente, não precisam ser versionados.
 - **Ambiente:** `.venv/`, `__pycache__/`, `*.pyc`.
@@ -741,16 +742,22 @@ ocorrências), em CSV e JSON; `eval/planilha.py` junta a avaliação inteira num
 
 ## Resultados
 
-O estudo de caso tem duas fases, sobre os mesmos 81 estímulos × 5 repetições
-(405 episódios), com o bot `deepseek:deepseek-v4-flash`. O instrumento foi
-**congelado em 29/10/2026** (hash das regras fixas dos juízes `d6ba731f26e8`,
-registrado em `versoes_das_instrucoes`) e é o mesmo nas duas fases. As
-conversas de cada fase foram geradas uma vez e avaliadas uma vez por juiz.
+O estudo de caso tem duas fases, que o TCC chama de primeira e segunda rodada,
+sobre os mesmos 81 estímulos × 5 repetições (405 episódios), com o bot
+`deepseek:deepseek-v4-flash`. O bot não mudou durante a geração das conversas
+de cada fase. O **instrumento**, isto é, as instruções dos juízes, as regras
+fixas que eles recebem, as asserções determinísticas e os limiares, ficou
+congelado a partir das avaliações definitivas de 29/10/2026 e é o mesmo nas
+duas fases (hash das regras fixas `d6ba731f26e8`, registrado em
+`versoes_das_instrucoes` de cada relatório).
 
-- **Fase 1:** a bateria de 28/10/2026, mais o roteiro de pedido de
-  encerramento, de 29/10; 1.526 turnos. A avaliação achou dez defeitos no bot
-  (D1 a D10). Os registros estão em `logs/`, junto com os da fase 2
-  (ver [Registros do estudo de caso](#registros-do-estudo-de-caso)).
+- **Fase 1:** a bateria de 28 e 29/10/2026, com o roteiro de pedido de
+  encerramento acrescentado em 29/10; 1.526 turnos. A leitura das ocorrências
+  constatou onze defeitos no bot. Dez deles, D1 a D10, estão descritos em
+  [`docs/achados_fase1.md`](docs/achados_fase1.md). O décimo primeiro, o bot
+  repetir como oferta o valor arredondado pela cliente, só foi reconhecido
+  depois da Fase 2, numa releitura das ocorrências da Fase 1, e por isso não
+  entrou na correção.
 - **Fase 2:** o bot com D1 a D10 corrigidos, e a bateria de 03/11/2026; 1.525
   turnos, nenhum episódio falho. Avalia-se com `--desde 2026-11-03`.
 
@@ -763,23 +770,42 @@ conversas de cada fase foram geradas uma vez e avaliadas uma vez por juiz.
 
 Os dois juízes cobram o mesmo preço por token; a diferença de custo vem do
 volume (na Fase 2, o Haiku gastou 5,7 milhões de tokens de entrada e 590 mil
-de saída; o Luna, 3,4 milhões e 202 mil). Da Fase 1 para a Fase 2, quase todas
-as métricas melhoraram nos dois juízes, e sete dos dez defeitos foram
-resolvidos. Os números métrica a métrica e o destino de cada defeito estão em
+de saída; o Luna, 3,4 milhões e 202 mil). Somadas as duas fases e os testes do
+instrumento, cada juiz recebeu cerca de 8.200 chamadas, ao custo de US$ 5,09 no
+Haiku e US$ 2,57 no Luna, e a geração das conversas das quatro baterias custou
+de US$ 1,30 a 2,60 no modelo do bot.
+
+**Efeito da correção.** Seis dos dez defeitos corrigidos deixaram de ser
+acusados por qualquer camada, e em outros dois as acusações restantes foram
+descartadas na leitura. A contestação da dívida e a "melhor condição" seguiram
+acusadas. Nas taxas, a diferença entre as fases não é estatística, e três
+métricas pioraram com o instrumento congelado (consistência determinística,
+consistência total e equidade no Luna), por falsos positivos das asserções e
+pela variação dos juízes. O destino de cada defeito está em
 [`docs/achados_fase1.md`](docs/achados_fase1.md), seções E e F.
 
 **Validação humana.** A concordância entre os juízes está na tela **Comparar
-juízes**. A concordância com o humano foi medida em 03/11/2026, sobre uma
-amostra de 10 itens por métrica tirada da Fase 1
-(`kappa__amostra__20261031T013350Z.csv`), com o κ e a taxa de confirmação
-(`kappa.py confirmar`). Como as instruções dos juízes não mudaram entre as
-fases, a validação vale para os dois juízes nas duas fases.
+juízes**. A concordância com o humano foi medida em três amostras rotuladas às
+cegas por uma só pessoa: 10 itens por métrica na Fase 1, 10 na Fase 2 e uma
+amostra ampliada de 100 itens por métrica na Fase 2. Na ampliada, só o
+**Claude Haiku 5.5 ficou validado, e só na equivalência** (κ = 0,95, intervalo
+de 0,81 a 1,00); os dois juízes de disparidade ficaram claramente abaixo do
+nível adotado (κ de 0,03 e 0,04). Nas demais métricas, o juiz serve como
+triagem, e as acusações só valem como defeito depois da leitura humana.
+
+**Testes do próprio instrumento.** A Fase 1 foi rejulgada pelos dois juízes
+(`logs/reteste_20261115/`) e, só nas conversas da amostra, com o raciocínio
+ligado (`logs/raciocinio_20261116/`). Uma bateria com 13 defeitos plantados na
+resposta (`logs/plantados_completa_20261116/`) teve os sete explícitos acusados
+em todas as execuções e parte dos seis sutis.
 
 **Instrumento determinístico revisto em 04/11/2026**, sem mexer nos juízes:
 a consistência passou a comparar a trajetória do estado da conversa, a
 fidelidade deixou de acusar o valor que o cliente pediu e o bot recusou, e o
 formato deixou de acusar "uma parcela menor". As duas fases foram recalculadas
-sem juiz (seção F de `docs/achados_fase1.md`).
+sem juiz (seção F de `docs/achados_fase1.md`). No TCC, os resultados principais
+são os do instrumento congelado, e os da versão revista valem como leitura
+complementar.
 
 Avaliações anteriores, todas **não definitivas**:
 
@@ -791,7 +817,7 @@ Avaliações anteriores, todas **não definitivas**:
 | 28/10 05:00 UTC | Haiku 5.5 | o juiz de groundedness via só os trechos recuperados; achou os defeitos do bot que exigiram a bateria nova |
 | 28/10 20:20, 29/10 04:18 e 05:23 UTC | Haiku 5.5 e GPT-6 Luna | sobre a bateria da Fase 1, mas antes de o instrumento congelar (regras fixas incompletas, juiz sem a conversa anterior) |
 
-Os relatórios ficam em `logs/`, que não é versionado. Os arquivos de
+Os relatórios ficam em `logs/`. Os arquivos de
 `logs/bateria__*.jsonl` guardam as baterias em sequência, por isso toda
 avaliação recorta pela data. A §5.2 da
 [especificação](docs/especificacao_metricas.md) guarda a medição de agosto
@@ -853,6 +879,11 @@ de uma interface (`FonteDeDados`) preparada para essa troca futura. A API HTTP
 de `api/` serve só a interface web.
 
 ## Os prompts dos juízes
+
+As instruções, na versão usada nas duas fases (tag `v1.0-tcc`), também estão
+publicadas à parte em
+[gabriellebcastro/qualillm-prompts](https://github.com/gabriellebcastro/qualillm-prompts),
+com as regras fixas entregues aos juízes.
 
 Cada juiz recebe a **composição de dois arquivos**, e a separação é a distinção
 entre framework e instanciação levada ao instrumento:
